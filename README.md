@@ -49,7 +49,7 @@ Output
 ["html","htm"]
 ```
 
-## Install
+## License
 
 Based off [node-mime by broofa for Node.Js](https://github.com/broofa/node-mime)
 
