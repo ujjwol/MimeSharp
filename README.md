@@ -19,7 +19,7 @@ Simply copy ```Mime.cs``` and ```ApacheMimeTypes.cs``` to your project and use a
 ## Usage
 Example usage in the console application ```Program.cs```
 
-### MimeSharp.Lookup(filePath)
+### Mime.Lookup(filePath)
 Get the mime type associated with a file, if no mime type is found `application/octet-stream` is returned. Performs a case-insensitive lookup using the extension in `filePath` (the substring after the last '/' or '.').  E.g.
 
 ```csharp
@@ -35,10 +35,10 @@ audio/ogg
 image/jpeg
 ```
 
-### MimeSharp.DefaultType()
+### mime.DefaultType()
 When no mime type is found. Default is `application/octet-stream`.
 
-### MimeSharp.Extension(mimeType)
+### mime.Extension(mimeType)
 Get all the extension for `mimeType`. Gives you a list `List<string>` of extensions. Empty list if no mime type is found.
 
 ```csharp
