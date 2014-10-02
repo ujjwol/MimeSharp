@@ -70,7 +70,7 @@ Even though I don't recommend adding your MIME type if you really have to do it,
 
 Based off [node-mime by broofa for Node.Js](https://github.com/broofa/node-mime)
 
-Licensed under MIT License
+This program is licensed under the MIT License.
 ```
 Copyright (c) 2014 Ujjwol Lamichhane
 
