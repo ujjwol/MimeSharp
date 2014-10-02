@@ -19,7 +19,7 @@ Simply copy ```Mime.cs``` and ```ApacheMimeTypes.cs``` to your project and use a
 ## Usage
 Example usage in the console application ```Program.cs```
 
-### Mime.Lookup(filePath)
+### mime.Lookup(filePath)
 Get the mime type associated with a file, if no mime type is found `application/octet-stream` is returned. Performs a case-insensitive lookup using the extension in `filePath` (the substring after the last '/' or '.').  E.g.
 
 ```csharp
