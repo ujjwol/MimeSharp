@@ -3,6 +3,7 @@ MimeSharp
 
 MIME type handling utility for C#. It includes all mime types and extensions curated by Apache located at:
 [http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types](http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types)
+Includes all 600+ types and 800+ extensions defined by the Apache project.
 Allows user to lookup mime type by filename, get file extensions for mime types.
 
 ## Install
