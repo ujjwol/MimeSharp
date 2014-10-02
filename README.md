@@ -17,7 +17,7 @@ https://www.nuget.org/packages/MimeSharp/
 Or simply download the MimeSharp.1.0.0.nupkg and use it.
 
 ### Reference the dll
-Get the ```MimeSharp.dll``` from ```Release``` folder and copy to your references folder and reference in your project. Now, you're reading to use it.
+Get the ```MimeSharp.dll``` from ```dist``` folder and copy to your references folder and reference in your project. Now, you're reading to use it.
 
 ### Using source files
 Simply copy ```Mime.cs``` and ```ApacheMimeTypes.cs``` to your project and use as any other class.
