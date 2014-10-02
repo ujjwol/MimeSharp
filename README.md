@@ -9,7 +9,12 @@ Allows user to lookup mime type by filename, get file extensions for mime types.
 ## Install
 
 ### NuGet Package
-Coming soon...
+```
+PM> Install-Package MimeSharp
+```
+https://www.nuget.org/packages/MimeSharp/
+
+Or simply download the MimeSharp.1.0.0.nupkg and use it.
 
 ### Reference the dll
 Get the ```MimeSharp.dll``` from ```Release``` folder and copy to your references folder and reference in your project. Now, you're reading to use it.
