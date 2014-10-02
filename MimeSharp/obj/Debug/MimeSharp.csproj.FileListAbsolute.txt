@@ -1,0 +1,5 @@
+C:\Users\c21416\Documents\playing_around\MimeSharp\MimeSharp\bin\Debug\MimeSharp.dll
+C:\Users\c21416\Documents\playing_around\MimeSharp\MimeSharp\bin\Debug\MimeSharp.pdb
+C:\Users\c21416\Documents\playing_around\MimeSharp\MimeSharp\obj\Debug\MimeSharp.csprojResolveAssemblyReference.cache
+C:\Users\c21416\Documents\playing_around\MimeSharp\MimeSharp\obj\Debug\MimeSharp.dll
+C:\Users\c21416\Documents\playing_around\MimeSharp\MimeSharp\obj\Debug\MimeSharp.pdb
