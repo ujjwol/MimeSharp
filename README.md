@@ -7,7 +7,14 @@ Allows user to lookup mime type by filename, get file extensions for mime types.
 
 ## Install
 
-Install simply by cloning MimeSharp and copy ```MimeSharp.cs``` and ```MimeTypes``` directory to your project directory
+### NuGet Package
+Coming soon...
+
+### Reference the dll
+Get the ```MimeSharp.dll``` from ```Release``` folder and copy to your references folder and reference in your project. Now, you're reading to use it.
+
+### Using source files
+Simply copy ```Mime.cs``` and ```ApacheMimeTypes.cs``` to your project and use as any other class.
 
 ## Usage
 Example usage in the console application ```Program.cs```
@@ -16,10 +23,10 @@ Example usage in the console application ```Program.cs```
 Get the mime type associated with a file, if no mime type is found `application/octet-stream` is returned. Performs a case-insensitive lookup using the extension in `filePath` (the substring after the last '/' or '.').  E.g.
 
 ```csharp
-var MimeSharp = new MimeSharp();
+var mime = new Mime();
 
-MimeSharp.Lookup(@"song.ogg"));
-MimeSharp.Lookup(@"picture.jpg"));
+mime.Lookup(@"song.ogg"));
+mime.Lookup(@"picture.jpg"));
 ```
 
 Output
@@ -35,11 +42,11 @@ When no mime type is found. Default is `application/octet-stream`.
 Get all the extension for `mimeType`. Gives you a list `List<string>` of extensions. Empty list if no mime type is found.
 
 ```csharp
-var MimeSharp = new MimeSharp();
+var mime = new Mime();
 
-MimeSharp.Extension("audio/ogg");
-MimeSharp.Extension("image/jpeg")
-MimeSharp.Extension("text/html")
+mime.Extension("audio/ogg");
+mime.Extension("image/jpeg")
+mime.Extension("text/html")
 ```
 
 Output
@@ -48,6 +55,10 @@ Output
 ["jpeg","jpg","jpe"]
 ["html","htm"]
 ```
+
+## Adding new mime type
+Even though I don't recommend adding your MIME type if you really have to do it, use the project from ```MimeSharp.FromFile``` directory and change the ```MimeTypes/mime.types``` file or even create new file and modify the source code.
+
 
 ## License
 
