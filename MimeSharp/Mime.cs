@@ -49,7 +49,13 @@ namespace MimeSharp
             //remove dot from extenstion to lookup in the dictionary
             extension = extension.Substring(1);
 
-            var mimeType = apacheMimes.FirstOrDefault(x => x.Value.Exists(m => m.Contains(extension))).Key;
+            // Get an exact match if possible
+            var mimeType = apacheMimes.FirstOrDefault(x => x.Value.Exists(m => m == extension)).Key;
+            if (!string.IsNullOrEmpty(mimeType))
+                return mimeType;
+
+            // Get a close match
+            mimeType = apacheMimes.FirstOrDefault(x => x.Value.Exists(m => m.Contains(extension))).Key;
             if (string.IsNullOrEmpty(mimeType))
                 return defaultType;
             return mimeType;
