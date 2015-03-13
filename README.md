@@ -1,5 +1,6 @@
 MimeSharp
 =========
+[![NuGet downloads](https://img.shields.io/nuget/dt/MimeSharp.svg)](https://www.nuget.org/packages/MimeSharp)
 [![Build Status](https://travis-ci.org/Ujjwol/MimeSharp.svg?branch=master)](https://travis-ci.org/Ujjwol/MimeSharp)
 
 MIME type handling utility for C#. It includes all mime types and extensions curated by Apache located at:
