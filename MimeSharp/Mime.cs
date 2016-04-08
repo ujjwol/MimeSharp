@@ -6,13 +6,13 @@ using System.Linq;
 
 namespace MimeSharp
 {
-    public class Mime
+    public static class Mime
     {
-        Dictionary<string, List<string>> apacheMimes = new Dictionary<string, List<string>>();
+        static readonly Dictionary<string, List<string>> ApacheMimes = new Dictionary<string, List<string>>();
 
-        private readonly string defaultType = "application/octet-stream";
+        private static readonly string defaultType = "application/octet-stream";
 
-        public Mime()
+        private static void Init()
         {
             var allApacheMimeTypes = ApacheMimeTypes.AllMimeTypes;
 
@@ -35,7 +35,7 @@ namespace MimeSharp
                         //mime-type is the key and value is the list of extensons it is associated with
                         //e.g. {"application/mathematica":["ma","nb","mb"]}
 
-                        apacheMimes.Add(matches.First(), matches.Skip(1).ToList());
+                        ApacheMimes.Add(matches.First(), matches.Skip(1).ToList());
 
                     }
                 }
@@ -43,33 +43,36 @@ namespace MimeSharp
 
         }
 
-        public string Lookup(string filePath)
+        public static string Lookup(string filePath)
         {
+            Init();
             var extension = Path.GetExtension(filePath).ToLower();
+
             //remove dot from extenstion to lookup in the dictionary
             extension = extension.Substring(1);
 
             // Get an exact match if possible
-            var mimeType = apacheMimes.FirstOrDefault(x => x.Value.Exists(m => m == extension)).Key;
+            var mimeType = ApacheMimes.FirstOrDefault(x => x.Value.Exists(m => m == extension)).Key;
             if (!string.IsNullOrEmpty(mimeType))
                 return mimeType;
 
             // Get a close match
-            mimeType = apacheMimes.FirstOrDefault(x => x.Value.Exists(m => m.Contains(extension))).Key;
+            mimeType = ApacheMimes.FirstOrDefault(x => x.Value.Exists(m => m.Contains(extension))).Key;
             if (string.IsNullOrEmpty(mimeType))
                 return defaultType;
             return mimeType;
         }
 
-        public string DefaultType()
+        public static string DefaultType()
         {
             return defaultType;
         }
 
 
-        public List<string> Extension(string mimeType)
+        public static List<string> Extension(string mimeType)
         {
-            var extensions = apacheMimes.FirstOrDefault(x => x.Key.Equals(mimeType)).Value;
+            Init();
+            var extensions = ApacheMimes.FirstOrDefault(x => x.Key.Equals(mimeType)).Value;
             if (extensions == null)
                 return new List<string>();
             return extensions;
