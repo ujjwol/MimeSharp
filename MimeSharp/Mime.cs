@@ -11,36 +11,48 @@ namespace MimeSharp
         static readonly Dictionary<string, List<string>> ApacheMimes = new Dictionary<string, List<string>>();
 
         private static readonly string defaultType = "application/octet-stream";
+        private static bool isInitialized = false;
+        private static object padLock = new object();
 
         private static void Init()
         {
-            var allApacheMimeTypes = ApacheMimeTypes.AllMimeTypes;
+            //If we are initialized, no need to initialize again.
+            if (isInitialized) return;
 
-            using (StringReader stringReader = new StringReader(allApacheMimeTypes))
+            lock (padLock)
             {
-                string line;
-                while ((line = stringReader.ReadLine()) != null)
+                // Now that we have a lock, we need to recheck to make sure that we haven't already initialized on another thread.
+                // If we have, no need to initialize again.
+                if (isInitialized) return;
+
+                var allApacheMimeTypes = ApacheMimeTypes.AllMimeTypes;
+
+                using (StringReader stringReader = new StringReader(allApacheMimeTypes))
                 {
-                    //Remove comments
-                    var currentLine = Regex.Replace(line, @"\s*#.*|^\s*|\s*$/g", "");
-
-                    //split them by whitespace
-                    var stripWhiteSpaceRegEx = new Regex(@"\s+", RegexOptions.None);
-
-                    if (!String.IsNullOrEmpty(currentLine))
+                    string line;
+                    while ((line = stringReader.ReadLine()) != null)
                     {
-                        var matches = stripWhiteSpaceRegEx.Split(currentLine);
+                        //Remove comments
+                        var currentLine = Regex.Replace(line, @"\s*#.*|^\s*|\s*$/g", "");
 
-                        //add the mime type and extension to the dictionary
-                        //mime-type is the key and value is the list of extensons it is associated with
-                        //e.g. {"application/mathematica":["ma","nb","mb"]}
+                        //split them by whitespace
+                        var stripWhiteSpaceRegEx = new Regex(@"\s+", RegexOptions.None);
 
-                        ApacheMimes.Add(matches.First(), matches.Skip(1).ToList());
+                        if (!String.IsNullOrEmpty(currentLine))
+                        {
+                            var matches = stripWhiteSpaceRegEx.Split(currentLine);
 
+                            //add the mime type and extension to the dictionary
+                            //mime-type is the key and value is the list of extensons it is associated with
+                            //e.g. {"application/mathematica":["ma","nb","mb"]}
+
+                            ApacheMimes.Add(matches.First(), matches.Skip(1).ToList());
+
+                        }
                     }
                 }
+                isInitialized = true;
             }
-
         }
 
         public static string Lookup(string filePath)
