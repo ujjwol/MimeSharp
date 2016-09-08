@@ -1438,6 +1438,7 @@ text/csv					csv
 # text/fwdred
 text/html					html htm
 # text/javascript
+text/markdown     md markdown
 text/n3						n3
 # text/parityfec
 text/plain					txt text conf def list log in
