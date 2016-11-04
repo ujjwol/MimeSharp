@@ -9,10 +9,7 @@ namespace MimeSharp
     public static class Mime
     {
         static readonly Dictionary<string, List<string>> ApacheMimes = new Dictionary<string, List<string>>();
-
         private static readonly string defaultType = "application/octet-stream";
-        private static bool isInitialized = false;
-        private static object padLock = new object();
 
         static Mime()
         {
