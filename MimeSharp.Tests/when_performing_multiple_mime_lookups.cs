@@ -1,5 +1,4 @@
 ﻿using System;
-using FluentAssertions;
 using Xunit;
 
 namespace MimeSharp.Tests
@@ -12,8 +11,12 @@ namespace MimeSharp.Tests
             var firstResult = Mime.Lookup("test.html");
             var secondResult = Mime.Lookup("test.pdf");
 
-            firstResult.Should().NotBeNullOrEmpty();
-            secondResult.Should().NotBeNullOrEmpty();
+            Assert.NotNull(firstResult);
+            Assert.NotEmpty(firstResult);
+
+            Assert.NotNull(secondResult);
+            Assert.NotEmpty(secondResult);
+
         }
     }
 }
