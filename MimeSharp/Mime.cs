@@ -50,6 +50,10 @@ namespace MimeSharp
         {
             var extension = Path.GetExtension(filePath).ToLower();
 
+            //return default type if there is no extension
+            if (string.IsNullOrEmpty(extension))
+                return defaultType;
+
             //remove dot from extenstion to lookup in the dictionary
             extension = extension.Substring(1);
 
