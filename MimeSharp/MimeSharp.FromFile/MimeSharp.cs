@@ -1,14 +1,14 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace MimeSharp
 {
     public class MimeSharp
     {
-        Dictionary<string, List<string>> apacheMimes = new Dictionary<string, List<string>>();
+        private Dictionary<string, List<string>> apacheMimes = new Dictionary<string, List<string>>();
 
         private readonly string defaultType = "application/octet-stream";
 
@@ -37,9 +37,7 @@ namespace MimeSharp
                         //e.g. {"application/mathematica":["ma","nb","mb"]}
 
                         apacheMimes.Add(matches.First(), matches.Skip(1).ToList());
-
                     }
-
                 }
             }
         }
@@ -61,7 +59,6 @@ namespace MimeSharp
             return defaultType;
         }
 
-
         public List<string> Extension(string mimeType)
         {
             var extensions = apacheMimes.FirstOrDefault(x => x.Key.Equals(mimeType)).Value;
@@ -69,7 +66,5 @@ namespace MimeSharp
                 return new List<string>();
             return extensions;
         }
-
     }
 }
-
